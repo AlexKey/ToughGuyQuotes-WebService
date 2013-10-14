@@ -30,11 +30,21 @@ http.createServer(function(req, res) {
         'Content-Type': 'text/plain'
     });
     
-    getQuotes("Alex", "Key", 10, function(quotes) {
-    
-        res.end(JSON.stringify(quotes.value));
+    getQuotes("Alex", "Key", 10, function(data) {
+
+        var quotes = data.value;
+
+        var quotesToReturn = {};
+
+        for (var i = 0; i < quotes.length; i++) {
+            var quote = quotes[i]
+                quotesToReturn[quote.id] = quote.joke;
+                console.log(quote);
+            
+        }
+
+        res.end(JSON.stringify(quotesToReturn));
     });
-    
 
 
 }).listen(process.env.PORT, process.env.IP);
