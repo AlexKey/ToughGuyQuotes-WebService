@@ -15,7 +15,7 @@ function getQuotes(firstName, lastName, count, callback) {
         
         //when all the data is read
         response.on('end', function() {
-           callback(str); 
+           callback(JSON.parse(str)); 
         });
     
     }
@@ -30,10 +30,9 @@ http.createServer(function(req, res) {
         'Content-Type': 'text/plain'
     });
     
-
     getQuotes("Alex", "Key", 10, function(quotes) {
     
-        res.end(quotes);
+        res.end(JSON.stringify(quotes.value));
     });
     
 
