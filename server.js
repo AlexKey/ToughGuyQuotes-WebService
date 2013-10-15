@@ -30,7 +30,7 @@ http.createServer(function(req, res) {
         'Content-Type': 'text/plain'
     });
     
-    getQuotes("Alex", "Key", 10, function(data) {
+    getQuotes("Lyndon", "B", 10, function(data) {
 
         var quotes = data.value;
 
